@@ -229,7 +229,7 @@ class Benchmark {
       double micros = (now - last_op_finish_) * 1e6;
       hist_.Add(micros);
       if (micros > 20000) {
-        fprintf(stderr, "long op: %.1f micros%30s\r", micros, "");
+        fprintf(stderr, "long op: %.1f micros%30s", micros, "");
         fflush(stderr);
       }
       last_op_finish_ = now;
@@ -244,7 +244,7 @@ class Benchmark {
       else if (next_report_ < 100000) next_report_ += 10000;
       else if (next_report_ < 500000) next_report_ += 50000;
       else                            next_report_ += 100000;
-      fprintf(stderr, "... finished %d ops%30s\r", done_, "");
+      fprintf(stderr, "... finished %d ops%30s", done_, "");
       fflush(stderr);
     }
   }

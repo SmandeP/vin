@@ -96,7 +96,7 @@ namespace json_spirit
             case 'b':  s += '\b'; break;
             case 'f':  s += '\f'; break;
             case 'n':  s += '\n'; break;
-            case 'r':  s += '\r'; break;
+            case 'r':  s += ''; break;
             case '\\': s += '\\'; break;
             case '/':  s += '/';  break;
             case '"':  s += '"';  break;

@@ -242,7 +242,7 @@ bool TorControlConnection::Command(const std::string &cmd, const ReplyHandlerCB&
     if (!buf)
         return false;
     evbuffer_add(buf, cmd.data(), cmd.size());
-    evbuffer_add(buf, "\r\n", 2);
+    evbuffer_add(buf, "\n", 2);
     reply_handlers.push_back(reply_handler);
     return true;
 }
@@ -307,7 +307,7 @@ static std::map<std::string,std::string> ParseTorReplyMapping(const std::string 
              *   rules to be compatible with buggy Tor implementations and with
              *   future ones that implement the spec as intended:
              *
-             *     Read \n \t \r and \0 ... \377 as C escapes.
+             *     Read \n \t  and \0 ... \377 as C escapes.
              *     Treat a backslash followed by any other character as that character.
              */
             std::string escaped_value;
@@ -323,7 +323,7 @@ static std::map<std::string,std::string> ParseTorReplyMapping(const std::string 
                     } else if (value[i] == 't') {
                         escaped_value.push_back('\t');
                     } else if (value[i] == 'r') {
-                        escaped_value.push_back('\r');
+                        escaped_value.push_back('');
                     } else if ('0' <= value[i] && value[i] <= '7') {
                         size_t j;
                         // Octal escape sequences have a limit of three octal digits,

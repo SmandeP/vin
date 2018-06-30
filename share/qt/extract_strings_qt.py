@@ -25,7 +25,7 @@ def parse_po(text):
     in_msgstr = False
 
     for line in text.split('\n'):
-        line = line.rstrip('\r')
+        line = line.rstrip('')
         if line.startswith('msgid '):
             if in_msgstr:
                 messages.append((msgid, msgstr))

@@ -26,7 +26,7 @@ static void initJsonEscape()
     escapes[(int)'\b'] = "\\b";
     escapes[(int)'\f'] = "\\f";
     escapes[(int)'\n'] = "\\n";
-    escapes[(int)'\r'] = "\\r";
+    escapes[(int)''] = "\";
     escapes[(int)'\t'] = "\\t";
 
     initEscapes = true;

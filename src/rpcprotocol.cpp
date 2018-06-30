@@ -46,16 +46,16 @@ const size_t POST_READ_SIZE = 256 * 1024;
 string HTTPPost(const string& strMsg, const map<string, string>& mapRequestHeaders)
 {
     ostringstream s;
-    s << "POST / HTTP/1.1\r\n"
-      << "User-Agent: nodex-json-rpc/" << FormatFullVersion() << "\r\n"
-      << "Host: 127.0.0.1\r\n"
-      << "Content-Type: application/json\r\n"
-      << "Content-Length: " << strMsg.size() << "\r\n"
-      << "Connection: close\r\n"
-      << "Accept: application/json\r\n";
+    s << "POST / HTTP/1.1\n"
+      << "User-Agent: nodex-json-rpc/" << FormatFullVersion() << "\n"
+      << "Host: 127.0.0.1\n"
+      << "Content-Type: application/json\n"
+      << "Content-Length: " << strMsg.size() << "\n"
+      << "Connection: close\n"
+      << "Accept: application/json\n";
     BOOST_FOREACH (const PAIRTYPE(string, string) & item, mapRequestHeaders)
-        s << item.first << ": " << item.second << "\r\n";
-    s << "\r\n"
+        s << item.first << ": " << item.second << "\n";
+    s << "\n"
       << strMsg;
 
     return s.str();
@@ -87,22 +87,22 @@ static const char* httpStatusDescription(int nStatus)
 string HTTPError(int nStatus, bool keepalive, bool headersOnly)
 {
     if (nStatus == HTTP_UNAUTHORIZED)
-        return strprintf("HTTP/1.0 401 Authorization Required\r\n"
-                         "Date: %s\r\n"
-                         "Server: nodex-json-rpc/%s\r\n"
-                         "WWW-Authenticate: Basic realm=\"jsonrpc\"\r\n"
-                         "Content-Type: text/html\r\n"
-                         "Content-Length: 296\r\n"
-                         "\r\n"
-                         "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\r\n"
-                         "\"http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd\">\r\n"
-                         "<HTML>\r\n"
-                         "<HEAD>\r\n"
-                         "<TITLE>Error</TITLE>\r\n"
-                         "<META HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=ISO-8859-1'>\r\n"
-                         "</HEAD>\r\n"
-                         "<BODY><H1>401 Unauthorized.</H1></BODY>\r\n"
-                         "</HTML>\r\n",
+        return strprintf("HTTP/1.0 401 Authorization Required\n"
+                         "Date: %s\n"
+                         "Server: nodex-json-rpc/%s\n"
+                         "WWW-Authenticate: Basic realm=\"jsonrpc\"\n"
+                         "Content-Type: text/html\n"
+                         "Content-Length: 296\n"
+                         "\n"
+                         "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n"
+                         "\"http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd\">\n"
+                         "<HTML>\n"
+                         "<HEAD>\n"
+                         "<TITLE>Error</TITLE>\n"
+                         "<META HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=ISO-8859-1'>\n"
+                         "</HEAD>\n"
+                         "<BODY><H1>401 Unauthorized.</H1></BODY>\n"
+                         "</HTML>\n",
             rfc1123Time(), FormatFullVersion());
 
     return HTTPReply(nStatus, httpStatusDescription(nStatus), keepalive,
@@ -112,13 +112,13 @@ string HTTPError(int nStatus, bool keepalive, bool headersOnly)
 string HTTPReplyHeader(int nStatus, bool keepalive, size_t contentLength, const char* contentType)
 {
     return strprintf(
-        "HTTP/1.1 %d %s\r\n"
-        "Date: %s\r\n"
-        "Connection: %s\r\n"
-        "Content-Length: %u\r\n"
-        "Content-Type: %s\r\n"
-        "Server: nodex-json-rpc/%s\r\n"
-        "\r\n",
+        "HTTP/1.1 %d %s\n"
+        "Date: %s\n"
+        "Connection: %s\n"
+        "Content-Length: %u\n"
+        "Content-Type: %s\n"
+        "Server: nodex-json-rpc/%s\n"
+        "\n",
         nStatus,
         httpStatusDescription(nStatus),
         rfc1123Time(),
@@ -193,7 +193,7 @@ int ReadHTTPHeaders(std::basic_istream<char>& stream, map<string, string>& mapHe
     while (true) {
         string str;
         std::getline(stream, str);
-        if (str.empty() || str == "\r")
+        if (str.empty() || str == "")
             break;
         string::size_type nColon = str.find(":");
         if (nColon != string::npos) {

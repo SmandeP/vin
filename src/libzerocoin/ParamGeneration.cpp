@@ -234,7 +234,7 @@ calculateGroupParamLengths(uint32_t maxPLen, uint32_t securityLevel,
 /// \param seedStr  A byte string seeding the process.
 /// \param pLen     The desired length of the modulus "p" in bits
 /// \param qLen     The desired length of the order "q" in bits
-/// \return         An IntegerGroupParams object
+/// eturn         An IntegerGroupParams object
 ///
 /// Calculates the description of a group G of prime order "q" embedded within
 /// a field "F_p". The input to this routine is in arbitrary seed. It uses the
@@ -283,7 +283,7 @@ deriveIntegerGroupParams(uint256 seed, uint32_t pLen, uint32_t qLen)
 
 /// \brief Deterministically compute a  set of group parameters with a specified order.
 /// \param groupOrder   The order of the group
-/// \return         An IntegerGroupParams object
+/// eturn         An IntegerGroupParams object
 ///
 /// Given "q" calculates the description of a group G of prime order "q" embedded within
 /// a field "F_p".
@@ -448,7 +448,7 @@ calculateGroupModulusAndOrder(uint256 seed, uint32_t pLen, uint32_t qLen,
 /// \param modulus                      Proposed prime modulus for the field.
 /// \param groupOrder                   Proposed order of the group.
 /// \param index                        Index value, selects which generator you're building.
-/// \return                             The resulting generator.
+/// eturn                             The resulting generator.
 /// \throws                             A std::runtime_error if error.
 ///
 /// Generates a random group generator deterministically as a function of (seed,pSeed,qSeed)
@@ -491,7 +491,7 @@ calculateGroupGenerator(uint256 seed, uint256 pSeed, uint256 qSeed, CBigNum modu
 /// \param in_seed                      Input seed for the process.
 /// \param out_seed                     Result: output seed from the process.
 /// \param prime_gen_counter            Result: number of iterations required.
-/// \return                             The resulting prime number.
+/// eturn                             The resulting prime number.
 /// \throws                             A std::runtime_error if error.
 ///
 /// Generates a random prime number of primeBitLen bits from a given input
@@ -641,7 +641,7 @@ generateIntegerFromSeed(uint32_t numBits, uint256 seed, uint32_t *numIterations)
 
 /// \brief Determines whether a uint32_t is a prime through trial division.
 /// \param candidate       Candidate to test.
-/// \return                true if the value is prime, false otherwise
+/// eturn                true if the value is prime, false otherwise
 ///
 /// Performs trial division to determine whether a uint32_t is prime.
 

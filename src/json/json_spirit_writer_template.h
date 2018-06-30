@@ -53,7 +53,7 @@ namespace json_spirit
             case '\b': s += to_str< String_type >( "\\b"  ); return true;
             case '\f': s += to_str< String_type >( "\\f"  ); return true;
             case '\n': s += to_str< String_type >( "\\n"  ); return true;
-            case '\r': s += to_str< String_type >( "\\r"  ); return true;
+            case '': s += to_str< String_type >( "\"  ); return true;
             case '\t': s += to_str< String_type >( "\\t"  ); return true;
         }
 

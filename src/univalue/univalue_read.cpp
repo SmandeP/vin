@@ -184,7 +184,7 @@ enum jtokentype getJsonToken(string& tokenVal, unsigned int& consumed,
                 case 'b':  valStr += "\b"; break;
                 case 'f':  valStr += "\f"; break;
                 case 'n':  valStr += "\n"; break;
-                case 'r':  valStr += "\r"; break;
+                case 'r':  valStr += ""; break;
                 case 't':  valStr += "\t"; break;
 
                 case 'u': {

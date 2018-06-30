@@ -212,7 +212,7 @@ class Stats {
       double micros = now - last_op_finish_;
       hist_.Add(micros);
       if (micros > 20000) {
-        fprintf(stderr, "long op: %.1f micros%30s\r", micros, "");
+        fprintf(stderr, "long op: %.1f micros%30s", micros, "");
         fflush(stderr);
       }
       last_op_finish_ = now;
@@ -227,7 +227,7 @@ class Stats {
       else if (next_report_ < 100000) next_report_ += 10000;
       else if (next_report_ < 500000) next_report_ += 50000;
       else                            next_report_ += 100000;
-      fprintf(stderr, "... finished %d ops%30s\r", done_, "");
+      fprintf(stderr, "... finished %d ops%30s", done_, "");
       fflush(stderr);
     }
   }
@@ -618,7 +618,7 @@ class Benchmark {
       bytes += size;
     }
     // Print so result is not dead
-    fprintf(stderr, "... crc=0x%x\r", static_cast<unsigned int>(crc));
+    fprintf(stderr, "... crc=0x%x", static_cast<unsigned int>(crc));
 
     thread->stats.AddBytes(bytes);
     thread->stats.AddMessage(label);

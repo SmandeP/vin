@@ -15,7 +15,7 @@ static const char *escapes[256] = {
 	"\\n",
 	NULL,
 	"\\f",
-	"\\r",
+	"\",
 	NULL,
 	NULL,
 	NULL,

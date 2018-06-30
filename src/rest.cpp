@@ -244,7 +244,7 @@ bool HTTPReq_REST(AcceptedConnection* conn,
             }
         }
     } catch (RestErr& re) {
-        conn->stream() << HTTPReply(re.status, re.message + "\r\n", false, false, "text/plain") << std::flush;
+        conn->stream() << HTTPReply(re.status, re.message + "\n", false, false, "text/plain") << std::flush;
         return false;
     }
 
