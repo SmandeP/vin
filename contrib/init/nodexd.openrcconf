@@ -1,0 +1,26 @@
+# /etc/conf.d/nodexd: config file for /etc/init.d/nodexd
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/nodex/nodex.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/nodexd"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/nodexd.pid"
+
+# Where to write nodexd data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/nodexd"
+
+# User and group to own nodexd process
+#BITCOIND_USER="nodex"
+#BITCOIND_GROUP="nodex"
+
+# Path to nodexd executable
+#BITCOIND_BIN="/usr/bin/nodexd"
+
+# Nice value to run nodexd under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""

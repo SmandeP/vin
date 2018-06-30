@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Nodex
+Comment=Nodex P2P Cryptocurrency
+Comment[fr]=Nodex, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Nodex, eşten eşe kriptografik sanal para birimi
+Exec=nodex-qt %u
+Terminal=false
+Type=Application
+Icon=nodex128
+MimeType=x-scheme-handler/nodex;
+Categories=Office;Finance;

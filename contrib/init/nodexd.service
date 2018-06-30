@@ -1,0 +1,26 @@
+[Unit]
+Description=Nodex's distributed currency daemon
+After=network.target
+
+[Service]
+User=nodex
+Group=nodex
+
+Type=forking
+PIDFile=/var/lib/nodexd/nodexd.pid
+
+ExecStart=/usr/bin/nodexd -daemon -pid=/var/lib/nodexd/nodexd.pid \
+          -conf=/etc/nodex/nodex.conf -datadir=/var/lib/nodexd
+
+ExecStop=-/usr/bin/nodex-cli -conf=/etc/nodex/nodex.conf \
+         -datadir=/var/lib/nodexd stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
